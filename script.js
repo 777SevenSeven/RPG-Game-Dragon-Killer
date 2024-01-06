@@ -126,6 +126,7 @@ function update(location) {
 }
 
 function goTown() {
+    background.style.marginTop = "200px";
     background.style.background = "#ffffff";
 
     if(verificacao == 0 ) {
@@ -150,11 +151,13 @@ function goTown() {
 }
 
 function goStore() {
+  background.style.marginTop = "200px";
   playMusic('StoreSound');
   update(locations[1]);
 }
 
 function goCave() {
+  background.style.marginTop = "200px";
   update(locations[2]);
 }
 
@@ -205,6 +208,7 @@ function fightSlime() {
   fighting = 0;
   goFight();
   background.style.background = "#0A0A23";
+  background.style.marginTop = "200px";
   verificacao = 0;
   monsterImage = document.querySelector(".monster1");
   monsterImage.style.display = "inline";
@@ -216,6 +220,7 @@ function fightBeast() {
   fighting = 1;
   goFight();
   background.style.background = "#0A0A23";
+  background.style.marginTop = "200px";
   verificacao = 1;
   monsterImage = document.querySelector(".monster2");
   monsterImage.style.display = "inline";
@@ -227,6 +232,7 @@ function fightDragon() {
   fighting = 2;
   goFight();
   background.style.background = "#0A0A23";
+  background.style.marginTop = "200px";
   verificacao = 2;
   monsterImage = document.querySelector(".monster3");
   monsterImage.style.display = "inline";
@@ -292,6 +298,7 @@ function defeatMonster() {
   xpText.innerText = xp;
   update(locations[4]);
   background.style.background = "#ffffff";
+  background.style.marginTop = "200px";
 
   if(verificacao == 0 ) {
     monsterImage = document.querySelector(".monster1");
@@ -317,6 +324,7 @@ function lose() {
   update(locations[5]);
   playMusic('loseSound');
   background.style.background = "#ffffff";
+  background.style.marginTop = "200px";
   if(verificacao == 0 ) {
     monsterImage = document.querySelector(".monster1");
     monsterImage.style.display = "none";
