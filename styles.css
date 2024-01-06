@@ -24,7 +24,6 @@ body {
 
 
   .monster1 {
-    margin-top: 130px;
     display: none;
     animation: none; 
     height: 500px;
@@ -33,7 +32,6 @@ body {
   }
 
   .monster2 {
-    margin-top: 130px;
     display: none;
     animation: none; 
     height: 600px;
@@ -43,7 +41,6 @@ body {
   }
 
   .monster3 {
-    margin-top: 130px;
     display: none;
     animation: none; 
     height: 600px;
