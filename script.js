@@ -68,7 +68,7 @@ const locations = [
   },
   {
     name: "store",
-    "button text": ["Comprar 10 vida (10 ouro)", "Comprar arma (30 ouro)", "Ir na praça da cidade"],
+    "button text": ["Comprar 10 vida (10 ouro)", "Comprar arma (30 ouro)", "praça da cidade"],
     "button functions": [buyHealth, buyWeapon, goTown],
     text: "Você entra na loja."
   },
@@ -86,7 +86,7 @@ const locations = [
   },
   {
     name: "kill monster",
-    "button text": ["Ir para a praça da cidade", "Ir para a praça da cidade", "Ir para a praça da cidade"],
+    "button text": ["praça da cidade", "praça da cidade", "praça da cidade"],
     "button functions": [goTown, goTown, goTown],
     text: 'O monstro grita "Arg!" enquanto morre. Você ganha pontos de experiência e encontra ouro.'
   },
@@ -104,7 +104,7 @@ const locations = [
   },
   {
     name: "easter egg",
-    "button text": ["2", "8", "Ir para a praça da cidade?"],
+    "button text": ["2", "8", "praça da cidade?"],
     "button functions": [pickTwo, pickEight, goTown],
     text: "Você encontra um jogo secreto. Escolha um número acima. Dez números serão escolhidos aleatoriamente entre 0 e 10. Se o número que você escolher corresponder a um dos números aleatórios, você vence!"
   }
