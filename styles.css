@@ -38,6 +38,7 @@ body {
     height: 500px;
     width: auto;
     background-color: #0A0A23;
+    margin-right: 400px;
   }
 
   .monster3 {
@@ -48,6 +49,7 @@ body {
     height: 800px;
     width: auto;
     background-color: #0A0A23;
+    margin-right: 400px;
   }
 
   .monster1.attacked {
