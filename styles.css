@@ -112,6 +112,17 @@ body {
 
   /*-------------------------------------------------------------------------------Responsivo----------------------------------------------------------------------------------*/
   @media (max-width: 1120px) {
+    #game {
+    margin-top: 250px;
+    max-width: 500px;
+    max-height: 400px;
+    background-color: #ffffff;
+    color: #ffffff;
+    margin: 30px auto 0px;
+    padding: 10px;
+    }
+
+      
     button {
       max-height: 250px;
       max-width: 100px;
