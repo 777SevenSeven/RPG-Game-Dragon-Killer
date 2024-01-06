@@ -21,6 +21,7 @@ body {
 
 
   .monster1 {
+    margin-top: 130px;
     display: none;
     margin-bottom: 35px;
     animation: none; 
@@ -30,6 +31,7 @@ body {
   }
 
   .monster2 {
+    margin-top: 130px;
     display: none;
     margin-bottom: 35px;
     animation: none; 
@@ -39,6 +41,7 @@ body {
   }
 
   .monster3 {
+    margin-top: 130px;
     display: none;
     margin-bottom: 35px;
     animation: none; 
@@ -67,6 +70,7 @@ body {
   }
   
   #game {
+    margin-top: 250px;
     max-width: 500px;
     max-height: 400px;
     background-color: #ffffff;
@@ -85,7 +89,7 @@ body {
   #monsterStats {
     display: none;
     border: 1px solid #0a0a23;
-    padding: 5px;
+    padding: 10px;
     color: #ffffff;
     background-color: #c70d0d;
   }
