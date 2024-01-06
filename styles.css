@@ -3,7 +3,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 700px;
+    height: 100%;
   }
 
   @keyframes Attack {
