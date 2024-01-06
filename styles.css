@@ -121,8 +121,8 @@ body {
     }
 
     .monster1 {
+      margin-top: 80px;
       display: none;
-      margin-bottom: 35px;
       animation: none; 
       height: 300px;
       width: auto;
@@ -130,8 +130,8 @@ body {
     }
   
     .monster2 {
+      margin-top: 80px;
       display: none;
-      margin-bottom: 35px;
       animation: none; 
       height: 300px;
       width: auto;
@@ -139,8 +139,8 @@ body {
     }
   
     .monster3 {
+      margin-top: 80px;
       display: none;
-      margin-bottom: 35px;
       animation: none; 
       height: 300px;
       width: auto;
