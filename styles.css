@@ -131,6 +131,7 @@ body {
   }
     
     #game {
+    font-size: 12px;
     max-width: 400px;
     max-height: 300px;
     background-color: #ffffff;
