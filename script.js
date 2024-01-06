@@ -49,7 +49,7 @@ const monsters = [
     health: 15
   },
   {
-    name: "Besta Raivosa",
+    name: "Besta",
     level: 8,
     health: 60
   },
@@ -74,7 +74,7 @@ const locations = [
   },
   {
     name: "cave",
-    "button text": ["Lutar contra Gosma", "Lutar contra Besta Raivosa", "praça da cidade"],
+    "button text": ["Lutar contra Gosma", "Lutar contra a Besta", "praça da cidade"],
     "button functions": [fightSlime, fightBeast, goTown],
     text: "Você entra na caverna. Você vê alguns monstros."
   },
