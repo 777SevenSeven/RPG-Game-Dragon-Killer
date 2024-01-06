@@ -74,7 +74,7 @@ const locations = [
   },
   {
     name: "cave",
-    "button text": ["Lutar contra Gosma", "Lutar contra Besta Raivosa", "Ir para a praça da cidade"],
+    "button text": ["Lutar contra Gosma", "Lutar contra Besta Raivosa", "praça da cidade"],
     "button functions": [fightSlime, fightBeast, goTown],
     text: "Você entra na caverna. Você vê alguns monstros."
   },
