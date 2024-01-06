@@ -106,6 +106,7 @@ body {
     background-color: #feac32;
     background-image: linear-gradient(#fecc4c, #ffac33);
     border: 3px solid #feac32;
+    border-radius: 5px 5px 5px 5px;
   }
 
   .musics {
