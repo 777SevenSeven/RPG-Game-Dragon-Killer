@@ -179,7 +179,7 @@ function buyWeapon() {
       currentWeapon++;
       goldText.innerText = gold;
       let newWeapon = weapons[currentWeapon].name;
-      text.innerText = "Agora você tem " + newWeapon + ".";
+      text.innerText = "Agora você empunha a " + newWeapon +"." + "A arma mais forte do jogo é a Espada Lendária.";
       inventory.push(newWeapon);
       text.innerText += " Em seu inventário você tem: " + inventory;
     } else {
