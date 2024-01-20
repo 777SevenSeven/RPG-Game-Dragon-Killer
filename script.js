@@ -88,7 +88,7 @@ const locations = [
     name: "kill monster",
     "button text": ["praça da cidade", "praça da cidade", "praça da cidade"],
     "button functions": [goTown, goTown, goTown],
-    text: 'O monstro grita "Arg!" enquanto morre. Você ganha pontos de experiência e encontra ouro.'
+    text: 'O monstro grita "Arg!" enquanto morre. Você fica mais experiente (quanto mais xp, mais dano) e encontra ouro.'
   },
   {
     name: "lose",
