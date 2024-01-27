@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro do Jogo</title>
+    <link rel="stylesheet" href="video.css">
+</head>
+<body>
+    <div id="video-container">
+        <video id="intro-video" autoplay>
+            <source src="videos/Intro.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    </div>
+
+    <!-- Adicione um botão para pular a introdução -->
+    <button id="skip-intro">Pular Introdução</button>
+
+    <script src="script.js"></script>
+    <script>
+        // Este código deve ser executado quando a introdução estiver pronta
+        const { ipcRenderer } = require('electron');
+    
+        ipcRenderer.send('show-menu');
+    </script>
+</body>
+</html>
