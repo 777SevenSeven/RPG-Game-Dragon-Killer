@@ -2,7 +2,7 @@
 
 ---
 
-# Título do Projeto
+# RPG - Dragon Killer
 
 Um jogo de RPG simples. A estória do jogo consiste em uma vila élfica, que foi dominada por um dragão feroz e que não sai do local.
 Os cidadãos da cidade estão muito amedrontados e por sorte, o jogador do jogo poderá ser o guerreiro valente que irá derrotar o dragão que assola a cidade!
