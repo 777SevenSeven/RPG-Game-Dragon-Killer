@@ -14,6 +14,7 @@ Fortaleça-se com armas cada vez melhores, quantidade maior de vida e ficando ca
 - [Título do Projeto](#RPG---Dragon-Killer)
   - [Índice](#índice)
   - [Visão Geral](#visão-geral)
+  - [Tecnologias Usadas](#Recursos-e-Tecnologias-Utilizadas)
   - [Demonstração](#demonstração)
   - [Instalação](#instalação)
   - [Como Usar](#como-usar)
@@ -28,6 +29,11 @@ Um jogo de RPG simples, feito utilizando técnicas de POO (Programação orienta
 Também como um projeto com objetivo de treino e estudos, enquanto eu fazia alguns cursos de JS e front-end no geral.
 
 Dentro do jogo há um botão que levará para uma janela de tutorial e dicas para iniciantes^^ Então caso sejam, não pulem haha.
+
+## Recursos e Tecnologias Utilizadas
+
+- HTML, CSS e JavaScript
+- ElectronJS para empacotamento
 
 ## Demonstração
 
@@ -65,6 +71,6 @@ Discord: 777SevenSeven
 
 ## Licença
 
-Para o .exe eu utilizei a ISC.
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
 
 ---
