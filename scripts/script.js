@@ -28,9 +28,6 @@ let currentMusic = null;
 document.addEventListener("DOMContentLoaded", function() {
   var video = document.getElementById("intro-video");
 
-  // Esconder os controles do vídeo
-  video.controls = false;
-
   // Adicionar evento para redirecionar após o término do vídeo
   video.addEventListener("ended", function() {
       // Redirecionar para o index.html
