@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'Eight Bit Dragon';  
+    src: url('fonte/fonteRPG.ttf') format('truetype');  
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden; /* Impede barras de rolagem caso o vídeo seja maior que a tela */
+    background-color: #000;
+    font-family: 'Eight Bit Dragon', sans-serif;
+}
+
+#video-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Eight Bit Dragon', sans-serif;
+}
+
+#intro-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    font-family: 'Eight Bit Dragon', sans-serif;
+}
+
+#skip-intro {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    background-color: #feac32;
+    background-image: linear-gradient(#fecc4c, #ffac33);
+    border: 3px solid #feac32;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Eight Bit Dragon', sans-serif;
+}
