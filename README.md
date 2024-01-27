@@ -54,13 +54,13 @@ Dou permissão para qualquer pessoa interessada em contribuir com o projeto, pod
 
 ## Autores
 
-Desenvolvedor: André Antônio da Silva Queiroz, redes sociais ( 
-Instagram: https://www.instagram.com/andrequeir0z/ 
-Linkedin: https://www.linkedin.com/in/andre-queirozz/ 
-Discord: 777SevenSeven);
-Designer: André Antônio da Silva Queiroz, redes sociais ( 
-Instagram: https://www.instagram.com/andrequeir0z/
-Linkedin: https://www.linkedin.com/in/andre-queirozz/ 
+Desenvolvedor: André Antônio da Silva Queiroz, redes sociais (<br> 
+Instagram: https://www.instagram.com/andrequeir0z/<br>
+Linkedin: https://www.linkedin.com/in/andre-queirozz/<br>
+Discord: 777SevenSeven);<br>
+Designer: André Antônio da Silva Queiroz, redes sociais (<br>
+Instagram: https://www.instagram.com/andrequeir0z/<br>
+Linkedin: https://www.linkedin.com/in/andre-queirozz/<br>
 Discord: 777SevenSeven);
 
 ## Licença
