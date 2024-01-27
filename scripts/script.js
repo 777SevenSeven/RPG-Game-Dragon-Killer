@@ -443,39 +443,3 @@ function restart() {
   xpText.innerText = xp;
   goTown();
 }
-
-function easterEgg() {
-  background.style.marginTop = "200px";
-  update(locations[7]);
-}
-
-function pickTwo() {
-  pick(2);
-}
-
-function pickEight() {
-  pick(8);
-}
-
-function pick(guess) {
-  const numbers = [];
-  while (numbers.length < 10) {
-    numbers.push(Math.floor(Math.random() * 11));
-  }
-  text.innerText = "Você escolheu " + palpite + ". Aqui estão os números aleatórios:\n";
-  for (let i = 0; i < 10; i++) {
-      text.innerText += números[i] + "\n";
-  }
-  if (números.indexOf(palpite) !== -1) {
-      text.innerText += "Certo! Você ganha 20 de ouro!";
-      gold += 20;
-      goldText.innerText = gold;
-  } else {
-      text.innerText += "Errado! Você perde 10 de vida!";
-      health -= 10;
-      healthText.innerText = health;
-      if (health <= 0) {
-          perder();
-      }
-  }
-}
