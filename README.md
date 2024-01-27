@@ -42,11 +42,11 @@ Abaixo há algumas Screenshots do jogo, com momentos diferentes, só para dar o 
 
 ![Screenshot 2024-01-25 132036](https://github.com/777SevenSeven/RPG-Game-Dragon-Killer/assets/135830488/291a3373-36be-4c90-9dc8-6b836118e29f)
 
-Instalem a pasta zipada no Google Drive anexado aqui: https://drive.google.com/drive/folders/1hLC5kbdLaMTsWAJe1vQjGL4YUS09qIL-?usp=sharing na página do projeto, e extraiam a pasta. Com a pasta extraída, você deve abrir o RPG - Dragon Killer.exe e ser feliz^^
+Instalem a pasta zipada no Google Drive anexado aqui: https://drive.google.com/drive/folders/1hLC5kbdLaMTsWAJe1vQjGL4YUS09qIL-?usp=sharing e extraiam a pasta. Com a pasta extraída, você deve abrir o RPG - Dragon Killer.exe e ser feliz^^
 
 ## Como Usar
 
-Instruções detalhadas sobre como usar o projeto. Isso pode incluir exemplos de código, comandos de terminal, etc.
+extraiam a pasta. Com a pasta extraída, você deve abrir o RPG - Dragon Killer.exe e ser feliz^^
 
 ## Contribuição
 
