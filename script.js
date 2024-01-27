@@ -24,6 +24,44 @@ const monsterHealthText = document.querySelector("#monsterHealth");
 
 let currentMusic = null;
 
+//Scripts para a intro do jogo//
+document.addEventListener("DOMContentLoaded", function() {
+  var video = document.getElementById("intro-video");
+
+  // Esconder os controles do vídeo
+  video.controls = false;
+
+  // Adicionar evento para redirecionar após o término do vídeo
+  video.addEventListener("ended", function() {
+      // Redirecionar para o index.html
+      window.location.href = "menu.html";
+  });
+});
+
+//pular intro
+document.addEventListener("DOMContentLoaded", function() {
+  var skipIntroBtn = document.getElementById("skip-intro");
+
+  // Adicionar evento de clique para pular a introdução
+  skipIntroBtn.addEventListener("click", function() {
+      // Redirecionar para a página do menu inicial
+      window.location.href = "menu.html"; 
+  });
+});
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+//scripts para o menu do jogo//
+document.addEventListener("DOMContentLoaded", function() {
+  var menuContainer = document.querySelector(".menu-container");
+
+// Adicionar evento de clique para pular a introdução
+skipIntroBtn.addEventListener("click", function() {
+  introContainer.style.display = "none";
+  menuContainer.style.display = "block";
+});
+});
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 function playMusic(musicId) {
     if (currentMusic) {
         currentMusic.pause();
@@ -49,7 +87,7 @@ const monsters = [
     health: 15
   },
   {
-    name: "Besta",
+    name: "Besta Raivosa",
     level: 8,
     health: 60
   },
@@ -68,13 +106,13 @@ const locations = [
   },
   {
     name: "store",
-    "button text": ["Comprar 10 vida (10 ouro)", "Comprar arma (30 ouro)", "praça da cidade"],
+    "button text": ["Comprar 10 vida (10 ouro)", "Comprar arma (30 ouro)", "Ir na praça da cidade"],
     "button functions": [buyHealth, buyWeapon, goTown],
     text: "Você entra na loja."
   },
   {
     name: "cave",
-    "button text": ["Lutar contra Gosma", "Lutar contra a Besta", "praça da cidade"],
+    "button text": ["Lutar contra Gosma", "Lutar contra Besta Raivosa", "Ir para a praça da cidade"],
     "button functions": [fightSlime, fightBeast, goTown],
     text: "Você entra na caverna. Você vê alguns monstros."
   },
@@ -86,9 +124,9 @@ const locations = [
   },
   {
     name: "kill monster",
-    "button text": ["praça da cidade", "praça da cidade", "praça da cidade"],
+    "button text": ["Ir para a praça da cidade", "Ir para a praça da cidade", "Ir para a praça da cidade"],
     "button functions": [goTown, goTown, goTown],
-    text: 'O monstro grita "Arg!" enquanto morre. Você fica mais experiente (quanto mais xp, mais dano) e encontra ouro.'
+    text: 'O monstro grita "Arg!" enquanto morre. Você ganha pontos de experiência e encontra ouro.'
   },
   {
     name: "lose",
@@ -104,7 +142,7 @@ const locations = [
   },
   {
     name: "easter egg",
-    "button text": ["2", "8", "praça da cidade?"],
+    "button text": ["2", "8", "Ir para a praça da cidade?"],
     "button functions": [pickTwo, pickEight, goTown],
     text: "Você encontra um jogo secreto. Escolha um número acima. Dez números serão escolhidos aleatoriamente entre 0 e 10. Se o número que você escolher corresponder a um dos números aleatórios, você vence!"
   }
@@ -126,39 +164,89 @@ function update(location) {
 }
 
 function goTown() {
-    background.style.marginTop = "200px";
     background.style.background = "#ffffff";
-
+    background.style.marginTop = "200px";
     if(verificacao == 0 ) {
         monsterImage = document.querySelector(".monster1");
         monsterImage.style.display = "none";
         statsText.style.color = "#0A0A23";
+        text.style.color = "#fff";
       }
       if(verificacao == 1 ) {
         monsterImage = document.querySelector(".monster2");
         monsterImage.style.display = "none";
         statsText.style.color = "#0A0A23";
+        text.style.color = "#fff";
       }
       if(verificacao == 2 ) {
         monsterImage = document.querySelector(".monster3");
         monsterImage.style.display = "none";
         statsText.style.color = "#0A0A23";
+        text.style.color = "#fff";
       }
-      const MainTheme = document.getElementById('TownSquare');
-      playMusic('TownSquare');
+
+      if(verificacao == 3 ) {
+        statsText.style.color = "#fff";
+        if(verificacao == 0 || verificacao == 1 || verificacao == 2 || verificacao == 3) {
+        monsterImage = document.querySelector(".caverna");
+        monsterImage.style.display = "none";
+        statsText.style.color = "#fff";
+      }
+    } else {
+        monsterImage = document.querySelector(".caverna");
+        monsterImage.style.display = "none";
+        statsText.style.color = "#fff";
+      }
+
+      if(verificacao == 4) {
+        hideVillage();
+      }
       
+      verificacao = 5;
+      MainTheme = document.getElementById('TownSquare');
+      playMusic('TownSquare');
+      background.style.background = "#0A0A23";
+      background.style.marginTop = "0px";
+      monsterImage = document.querySelector(".vila");
+      monsterImage.style.display = "inline";
   update(locations[0]);
 }
 
 function goStore() {
-  background.style.marginTop = "200px";
   playMusic('StoreSound');
   update(locations[1]);
+
+  // Oculta a cidade/vila e exibe a loja
+  monsterImage = document.querySelector(".vila");
+  monsterImage.style.display = "none";
+  
+  monsterImage = document.querySelector(".loja");
+  if (verificacao == 5) {
+      monsterImage = document.querySelector(".loja");
+  }
+  monsterImage.style.display = "inline";
+  
+  verificacao = 4;
+}
+
+// Função para ocultar a cidade/vila
+function hideVillage() {
+  monsterImage = document.querySelector(".loja");
+  monsterImage.style.display = "none";
 }
 
 function goCave() {
-  background.style.marginTop = "200px";
+  playMusic('caveSound');
   update(locations[2]);
+  background.style.background = "#0A0A23";
+  background.style.marginTop = "0px";
+  monsterImage = document.querySelector(".caverna");
+  monsterImage.style.display = "inline";
+  monsterImage = document.querySelector(".vila");
+  monsterImage.style.display = "none";
+  statsText.style.color = "#0A0A23";
+  text.style.color = "#fff";
+  verificacao = 3;
 }
 
 function buyHealth() {
@@ -179,14 +267,15 @@ function buyWeapon() {
       currentWeapon++;
       goldText.innerText = gold;
       let newWeapon = weapons[currentWeapon].name;
-      text.innerText = "Agora você empunha a " + newWeapon +"." + "A arma mais forte do jogo é a Espada Lendária.";
+      text.innerText = "Agora você está empunhando:" + " " + newWeapon + "." + " ";
       inventory.push(newWeapon);
-      text.innerText += " Em seu inventário você tem: " + inventory;
+      text.innerText += "  " + "Em seu inventário você tem: " + " " + inventory;
     } else {
       text.innerText = "Você não tem ouro o suficiente para comprar uma arma.";
     }
   } else {
     text.innerText = "Você já tem a arma mais forte!";
+    button2.style.backgroundColor="red";
     button2.innerText = "Vender arma por 15 ouro";
     button2.onclick = sellWeapon;
   }
@@ -201,6 +290,7 @@ function sellWeapon() {
     text.innerText += " No seu inventário você tem: " + inventory;
   } else {
     text.innerText = "Não venda sua única arma!";
+    text.style.color="red";
   }
 }
 
@@ -208,8 +298,8 @@ function fightSlime() {
   fighting = 0;
   goFight();
   background.style.background = "#0A0A23";
-  background.style.marginTop = "200px";
   verificacao = 0;
+  background.style.marginTop = "0px";
   monsterImage = document.querySelector(".monster1");
   monsterImage.style.display = "inline";
   playMusic('slimeSound');
@@ -220,7 +310,7 @@ function fightBeast() {
   fighting = 1;
   goFight();
   background.style.background = "#0A0A23";
-  background.style.marginTop = "200px";
+  background.style.marginTop = "0px";
   verificacao = 1;
   monsterImage = document.querySelector(".monster2");
   monsterImage.style.display = "inline";
@@ -232,12 +322,13 @@ function fightDragon() {
   fighting = 2;
   goFight();
   background.style.background = "#0A0A23";
-  background.style.marginTop = "200px";
+  background.style.marginTop = "0px";
   verificacao = 2;
   monsterImage = document.querySelector(".monster3");
   monsterImage.style.display = "inline";
   playMusic('dragonSound');
   playMusic('dragonMusic');
+  monsterImage.style.zIndex = 1;
 }
 
 function goFight() {
@@ -273,6 +364,8 @@ function attack() {
   }
   if (Math.random() <= .1 && inventory.length !== 1) {
     text.innerText += " Seu " + inventory.pop() + " quebrou.";
+    text.style.color="red";
+    text.style.fontWeight="bold";
     currentWeapon--;
   }
 }
@@ -297,34 +390,42 @@ function defeatMonster() {
   goldText.innerText = gold;
   xpText.innerText = xp;
   update(locations[4]);
-  background.style.background = "#ffffff";
-  background.style.marginTop = "200px";
 
   if(verificacao == 0 ) {
     monsterImage = document.querySelector(".monster1");
     monsterImage.style.display = "none";
     statsText.style.color = "#0A0A23";
-    playMusic('vitorySound');  
+    playMusic('vitorySound');
+    monsterImage.classList.add('attacked');
+    setTimeout(() => {
+        monsterImage.classList.remove('attacked');
+    }, 500); 
   }
   if(verificacao == 1 ) {
     monsterImage = document.querySelector(".monster2");
     monsterImage.style.display = "none";
     statsText.style.color = "#0A0A23";
-    playMusic('vitorySound');  
+    playMusic('vitorySound');
+    monsterImage.classList.add('attacked');
+    setTimeout(() => {
+        monsterImage.classList.remove('attacked');
+    }, 500);  
   }
   if(verificacao == 2 ) {
     monsterImage = document.querySelector(".monster3");
     monsterImage.style.display = "none";
     statsText.style.color = "#0A0A23";
-    playMusic('vitorySound');  
+    playMusic('vitorySound');
+    monsterImage.classList.add('attacked');
+    setTimeout(() => {
+        monsterImage.classList.remove('attacked');
+    }, 500);   
   }
 }
 
 function lose() {
   update(locations[5]);
   playMusic('loseSound');
-  background.style.background = "#ffffff";
-  background.style.marginTop = "200px";
   if(verificacao == 0 ) {
     monsterImage = document.querySelector(".monster1");
     monsterImage.style.display = "none";
@@ -359,6 +460,7 @@ function restart() {
 }
 
 function easterEgg() {
+  background.style.marginTop = "200px";
   update(locations[7]);
 }
 
