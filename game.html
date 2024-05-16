@@ -2,27 +2,8 @@
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="Jogo de RPG por turno">
-    <meta name="keywords" content="game, RPG, dragão">
-    <meta name="author" content="André Antônio da Silva Queiroz">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="RPG - Matador de Dragão!">
-    <meta property="og:description" content="Jogo de RPG - O Matador de Dragão!">
-    <meta property="og:url" content="https://777sevenseven.github.io/RPG-Game/">
-
-    <!-- Compatibilidade com outros sites ou dispositivos -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- Ícones -->
-    <link rel="apple-touch-icon" sizes="180x180" href="">
-    <link rel="icon" type="image/png" sizes="32x32" href="">
-    <link rel="icon" type="image/png" sizes="16x16" href="">
-    <link rel="icon" type="image/png" sizes="192x192" href="">
-    <meta name="msapplication-TileImage" content=""> 
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="icon" href="imagens/dragao.png" type="image/x-icon">
-    <link rel="stylesheet" href="fonte/fonteRPG.ttf"> 
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="fonte/fonteRPG.ttf">
     <title>RPG - Dragon Killer</title>
   </head>
   <body>
@@ -41,15 +22,33 @@
                 <audio id="slimeSound" src="musicas/slimeSound.mp3"></audio>
                 <audio id="caveSound" src="musicas/caverna.mp3"></audio>
                 <audio id="menuSound" src="musicas/menu.mp3"></audio>
+                <audio id="skeletonMusic" src="musicas/skeletonSound.mp3"></audio>
+                <audio id="fireCreatureSound" src="musicas/fireCreatureSound.mp3"></audio>
+                <audio id="gorgonMusic" src="musicas/gorgonSound.mp3"></audio>
+                <audio id="hydraMusic" src="musicas/hidraSound.mp3"></audio>
+                <audio id="necromancerMusic" src="musicas/necromancerSound.mp3"></audio>
+                <audio id="werewolfMusic" src="musicas/werewolfSound.mp3"></audio>
+                <audio id="azazelMusic" src="musicas/azazelSound.mp3"></audio>
+                <audio id="witchMusic" src="musicas/witchSound.mp3"></audio>
             </audio>
         </div>
         <div class="monsters">
             <img class="monster1" src="imagens/slime.png">
             <img class="monster2" src="imagens/fangedBeast.png">
+            <img class="monster4" src="imagens/Skeleton1.png">
+            <img class="monster5" src="imagens/fireCreature.png">
             <img class="monster3" src="imagens/dragon.png">
+            <img class="monster6" src="imagens/necromancer.png">
+            <img class="monster7" src="imagens/Hidra.png">
+            <img class="monster8" src="imagens/Bruxas.png">
+            <img class="monster9" src="imagens/Lobisomen.png">
+            <img class="monster10" src="imagens/Gorgon.png">
+            <img class="azazel" src="imagens/finalBoss.png">
             <img class="vila" src="imagens/vila.jpg">
             <img class="caverna" src="imagens/caverna.png">
             <img class="loja" src="imagens/loja.png">
+            <img class="finalMap" src="imagens/finalMap.png" hidden>
+            <img class="waterCave" src="imagens/waterCave.jpg" hidden>
         </div>
       <div id="stats">
         <span class="stat">XP: <strong><span id="xpText">0</span></strong></span>
@@ -59,16 +58,23 @@
       <div id="controls">
         <button id="button1" data-audio="musicas/monsterTheme1">Ir para a loja</button>
         <button id="button2" data-audio="musicas/monsterTheme2">Ir para a caverna</button>
-        <button id="button3" data-audio="musicas/monsterTheme3">Lutar contra o dragão</button>
+        <button id="button3" data-audio="musicas/monsterTheme3" onclick="showFinalMap()">Lutar contra o Azazel</button>
+        <button id="openMonsterList">Lista de Monstros</button>
+        <div id="monsterList" class="hidden">
+        <h2>Lista de Monstros</h2>
+        <div id="monsterNames">
+            <!-- Nomes dos monstros serão inseridos aqui -->
+        </div>
+    </div>
       </div>
       <div id="monsterStats">
         <span class="stat">Nome do Monstro: <strong><span id="monsterName"></span></strong></span>
         <span class="stat">Vida: <strong><span id="monsterHealth"></span></strong></span>
       </div>
       <div id="text">
-        Bem-vindo ao Dragon RPG. Você deve derrotar o dragão que impede as pessoas de deixar a cidade. Você está na praça da cidade. Onde você quer ir? Use os botões acima.
+        Bem-vindo ao Dragon Killer. Você deve derrotar o Demônio que impede as pessoas de deixar a cidade. Você está na praça da cidade. Onde você quer ir? Use os botões acima.
       </div>
     </div>
-    <script src="scripts/script.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
