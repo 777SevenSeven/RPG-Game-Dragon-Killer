@@ -28,6 +28,9 @@ let currentMusic = null;
 document.addEventListener("DOMContentLoaded", function() {
   var video = document.getElementById("intro-video");
 
+  // Esconder os controles do vídeo
+  video.controls = false;
+
   // Adicionar evento para redirecionar após o término do vídeo
   video.addEventListener("ended", function() {
       // Redirecionar para o index.html
@@ -81,24 +84,76 @@ const monsters = [
   {
     name: "Gosma",
     level: 2,
-    health: 15
+    health: 15,
+    index: 0
   },
   {
     name: "Besta Raivosa",
     level: 8,
-    health: 60
+    health: 60,
+    index: 1
   },
   {
     name: "Dragão",
+    level: 9,
+    health: 70,
+    index: 2
+  },
+  { 
+    name: "Esqueleto Maligno",
+    level: 4,
+    health: 20,
+    index: 3
+   },
+   {
+    name: "Elemental do Fogo",
+    level: 9,
+    health: 80,
+    index: 4
+   },
+   {
+    name: "Necromante Sombrio",
+    level: 10,
+    health: 90,
+    index: 5
+   },
+   {
+    name: "Hidra",
+    level: 11,
+    health: 100,
+    index: 6
+   },
+   {
+    name: "Bruxas Sombrias",
+    level: 12,
+    health: 110,
+    index: 7
+   },
+   {
+    name: "Lobisomen",
+    level: 13,
+    health: 120,
+    index: 8
+   },
+   {
+    name: "Górgon",
+    level: 14,
+    health: 130,
+    index: 9
+   },
+   {
+    name: "Azazel, O devorador de Almas",
     level: 20,
-    health: 300
-  }
+    health: 300,
+    index: 10
+   },
+
 ]
 const locations = [
   {
     name: "town square",
-    "button text": ["Ir para a loja", "Ir para a caverna", "Lutar com o Dragão"],
-    "button functions": [goStore, goCave, fightDragon],
+    "button text": ["Ir para a loja", "Ir para a caverna", "Lutar com o Azazel"],
+    "button functions": [goStore, goCave, fightAzazel],
     text: 'Você está na praça da cidade. Você vê um sinal que diz \"Loja\".'
   },
   {
@@ -117,37 +172,31 @@ const locations = [
     name: "fight",
     "button text": ["Atacar", "Esquivar", "Fugir"],
     "button functions": [attack, dodge, goTown],
-    text: "Você está lutando contra um monstro."
+    text: "Você está lutando contra um monstro.",
   },
   {
     name: "kill monster",
     "button text": ["Ir para a praça da cidade", "Ir para a praça da cidade", "Ir para a praça da cidade"],
     "button functions": [goTown, goTown, goTown],
-    text: 'O monstro grita "Arg!" enquanto morre. Você ganha pontos de experiência e encontra ouro.'
+    text: 'O monstro agoniza enquanto morre. Você ganha pontos de experiência e encontra ouro.'
   },
   {
     name: "lose",
     "button text": ["REINICIAR?", "REINICIAR?", "REINICIAR?"],
     "button functions": [restart, restart, restart],
-    text: "Você morreu e foi devorado. ☠️"
+    text: "Você morreu e teve seu corpo Desmembrado! ☠️"
   },
   { 
     name: "win", 
     "button text": ["REINICIAR?", "REINICIAR?", "REINICIAR?"], 
     "button functions": [restart, restart, restart], 
-    text: "Você derrotou o dragão! VOCÊ ZEROU O JOGO! 🎉"
+    text: "Você derrotou o Azazel! VOCÊ ZEROU O JOGO! 🎉"
   },
-  {
-    name: "easter egg",
-    "button text": ["2", "8", "Ir para a praça da cidade?"],
-    "button functions": [pickTwo, pickEight, goTown],
-    text: "Você encontra um jogo secreto. Escolha um número acima. Dez números serão escolhidos aleatoriamente entre 0 e 10. Se o número que você escolher corresponder a um dos números aleatórios, você vence!"
-  }
 ];
 
 button1.onclick = goStore;
 button2.onclick = goCave;
-button3.onclick = fightDragon;
+button3.onclick = fightAzazel;
 
 function update(location) {
   monsterStats.style.display = "none";
@@ -160,36 +209,180 @@ function update(location) {
   text.innerText = location.text;
 }
 
+botaoListaMonstros = document.getElementById("openMonsterList");
+document.getElementById("openMonsterList").addEventListener("click", function() {
+  document.getElementById("monsterList").classList.toggle("hidden");
+});
+
+
+const monsterNamesContainer = document.getElementById("monsterNames");
+
+monsters.forEach(monster => {
+  const p = document.createElement("p");
+  p.textContent = monster.name;
+  p.addEventListener("click", function() {
+      startFight(monster.index);
+  });
+  monsterNamesContainer.appendChild(p);
+});
+
+function startFight(monsterIndex) {
+  // Implemente aqui a função para começar a luta com o monstro selecionado
+  // Você pode chamar a função do seu jogo que inicia a luta com o monstro correspondente ao índice
+  // Por exemplo, você pode chamar a função fightSlime() se o índice for 0
+  document.getElementById("monsterList").classList.add("hidden");
+  switch (monsterIndex) {
+      case 0:
+          fightSlime();
+          break;
+      case 1:
+          fightBeast();
+          break;
+      case 2:
+          fightDragon();
+          break;
+      case 3:
+          fightSkeleton();
+          break;
+      case 4:
+          fightFireElemental();
+          break;
+      case 5:
+          fightNecromancer();
+          break;
+      case 6:
+          fightHydra();
+          break;
+      case 7:
+          fightDarkWitches();
+          break;
+      case 8:
+          fightWerewolf();
+          break;
+      case 9:
+          fightGorgon();
+          break;
+      default:
+          break;
+  }
+}
+
+function updateLocation(locationIndex, showSkeleton, showFireElemental) {
+  const location = locations[locationIndex];
+  monsterStats.style.display = "none";
+  button1.innerText = location["button text"][0];
+  button2.innerText = location["button text"][1];
+  button3.innerText = location["button text"][2];
+  button1.onclick = location["button functions"][0];
+  button2.onclick = location["button functions"][1];
+  button3.onclick = location["button functions"][2];
+
+  if (locationIndex === 2) {
+    botaoListaMonstros.style.display = "inline";
+  } else {
+    botaoListaMonstros.style.display = "none";
+  }
+
+  text.innerText = location.text;
+}
+
+function hideMonsters() {
+  const monsterImages = document.querySelectorAll('.monster');
+  monsterImages.forEach(monster => {
+    monster.style.display = "none";
+    const azazel = document.getElementsByClass(".azazel");
+    azazel.style.display = "none";
+  });
+}
+
+
 function goTown() {
     background.style.background = "#ffffff";
     background.style.marginTop = "200px";
-    if(verificacao == 0 ) {
+    if(verificacao == "slime" ) {
         monsterImage = document.querySelector(".monster1");
         monsterImage.style.display = "none";
         statsText.style.color = "#0A0A23";
         text.style.color = "#fff";
       }
-      if(verificacao == 1 ) {
+      if(verificacao == "fangedBeast" ) {
         monsterImage = document.querySelector(".monster2");
         monsterImage.style.display = "none";
         statsText.style.color = "#0A0A23";
         text.style.color = "#fff";
       }
-      if(verificacao == 2 ) {
+      if(verificacao == "dragao" ) {
         monsterImage = document.querySelector(".monster3");
         monsterImage.style.display = "none";
         statsText.style.color = "#0A0A23";
         text.style.color = "#fff";
       }
 
+      if(verificacao == "skeleton" ) {
+        monsterImage = document.querySelector(".monster4");
+        monsterImage.style.display = "none";
+        statsText.style.color = "#0A0A23";
+        text.style.color = "#fff";
+      }
+
+      if(verificacao == "fireElemental" ) {
+        monsterImage = document.querySelector(".monster5");
+        monsterImage.style.display = "none";
+        statsText.style.color = "#0A0A23";
+        text.style.color = "#fff";
+      }
+
+      if(verificacao == "necromancer" ) {
+        monsterImage = document.querySelector(".monster6");
+        monsterImage.style.display = "none";
+        statsText.style.color = "#0A0A23";
+        text.style.color = "#fff";
+      }
+
+      if(verificacao == "hydra" ) {
+        monsterImage = document.querySelector(".monster7");
+        monsterImage.style.display = "none";
+        statsText.style.color = "#0A0A23";
+        text.style.color = "#fff";
+      }
+
+      if(verificacao == "darkWitches" ) {
+        monsterImage = document.querySelector(".monster8");
+        monsterImage.style.display = "none";
+        statsText.style.color = "#0A0A23";
+        text.style.color = "#fff";
+      }
+
+      if(verificacao == "werewolf" ) {
+        monsterImage = document.querySelector(".monster9");
+        monsterImage.style.display = "none";
+        statsText.style.color = "#0A0A23";
+        text.style.color = "#fff";
+      }
+
+      if(verificacao == "gorgon" ) {
+        monsterImage = document.querySelector(".monster10");
+        monsterImage.style.display = "none";
+        statsText.style.color = "#0A0A23";
+        text.style.color = "#fff";
+      }
+
+      if(verificacao == "azazel" ) {
+        monsterImage = document.querySelector(".azazel");
+        monsterImage.style.display = "none";
+        statsText.style.color = "#0A0A23";
+        text.style.color = "#fff";
+        hideAzazel();
+      }
+
       if(verificacao == 3 ) {
         statsText.style.color = "#fff";
-        if(verificacao == 0 || verificacao == 1 || verificacao == 2 || verificacao == 3) {
+        if(verificacao == "slime" || verificacao == 1 || verificacao == 2 || verificacao == 3 || verificacao == 4) {
         monsterImage = document.querySelector(".caverna");
         monsterImage.style.display = "none";
         statsText.style.color = "#fff";
       }
-    } else {
+      } else {
         monsterImage = document.querySelector(".caverna");
         monsterImage.style.display = "none";
         statsText.style.color = "#fff";
@@ -198,15 +391,27 @@ function goTown() {
       if(verificacao == 4) {
         hideVillage();
       }
-      
-      verificacao = 5;
-      MainTheme = document.getElementById('TownSquare');
-      playMusic('TownSquare');
-      background.style.background = "#0A0A23";
-      background.style.marginTop = "0px";
-      monsterImage = document.querySelector(".vila");
-      monsterImage.style.display = "inline";
+      // Adiciona o botão de lutar contra Azazel apenas se o jogador já não estiver lutando contra ele
+      if (verificacao != "azazel") {
+      button3.style.display = "inline";
+      button3.innerText = "Lutar contra Azazel";
+      button3.onclick = fightAzazel;
+      } else {
+      button3.style.display = "none";
+    }
+
+  // Configurações padrão da vila
+  verificacao = 5;
+  MainTheme = document.getElementById('TownSquare');
+  playMusic('TownSquare');
+  background.style.background = "#0A0A23";
+  background.style.marginTop = "0px";
+  monsterImage = document.querySelector(".vila");
+  monsterImage.style.display = "inline";
+  botaoListaMonstros.style.display = "none";
+  document.getElementById("monsterList").classList.add("hidden");
   update(locations[0]);
+  hideAzazel();
 }
 
 function goStore() {
@@ -222,8 +427,11 @@ function goStore() {
       monsterImage = document.querySelector(".loja");
   }
   monsterImage.style.display = "inline";
-  
+  botaoListaMonstros.style.display = "none";
   verificacao = 4;
+  const azazel = document.getElementsByClass(".azazel");
+  azazel.style.display = "none";
+  hideAzazel();
 }
 
 // Função para ocultar a cidade/vila
@@ -234,7 +442,6 @@ function hideVillage() {
 
 function goCave() {
   playMusic('caveSound');
-  update(locations[2]);
   background.style.background = "#0A0A23";
   background.style.marginTop = "0px";
   monsterImage = document.querySelector(".caverna");
@@ -244,7 +451,18 @@ function goCave() {
   statsText.style.color = "#0A0A23";
   text.style.color = "#fff";
   verificacao = 3;
+
+  // Verifica o nível de XP para determinar qual criatura mostrar na caverna
+  if (xp >= 8) {
+    updateLocation(2, false, true); // Elemental do Fogo desbloqueado
+  } else if (xp >= 4) {
+    updateLocation(2, true, false); // Esqueleto desbloqueado
+  } else {
+    updateLocation(2, false, false); // Nenhum desbloqueado
+  }
+  hideAzazel();
 }
+
 
 function buyHealth() {
   if (gold >= 10) {
@@ -295,7 +513,7 @@ function fightSlime() {
   fighting = 0;
   goFight();
   background.style.background = "#0A0A23";
-  verificacao = 0;
+  verificacao = "slime";
   background.style.marginTop = "0px";
   monsterImage = document.querySelector(".monster1");
   monsterImage.style.display = "inline";
@@ -308,24 +526,129 @@ function fightBeast() {
   goFight();
   background.style.background = "#0A0A23";
   background.style.marginTop = "0px";
-  verificacao = 1;
+  verificacao = "fangedBeast";
   monsterImage = document.querySelector(".monster2");
   monsterImage.style.display = "inline";
   playMusic('growlSound');
   playMusic('fangedBeastMusic');
 }
 
+// Função para lutar contra o esqueleto
+function fightSkeleton() {
+  fighting = 3; // Índice do esqueleto no array de monstros
+  goFight();
+  background.style.background = "#0A0A23";
+  background.style.marginTop = "0px";
+  verificacao = "skeleton"; // Atualiza a verificação para indicar que o jogador está lutando contra o esqueleto
+  monsterImage = document.querySelector(".monster4");
+  monsterImage.style.display = "inline";
+  playMusic('skeletonMusic');
+}
+
+// Função para lutar contra o Elemental do Fogo
+function fightFireElemental() {
+  fighting = 4; // Índice do Elemental do Fogo no array de monstros
+  goFight();
+  background.style.background = "#0A0A23";
+  background.style.marginTop = "0px";
+  verificacao = "fireElemental"; // Atualiza a verificação para indicar que o jogador está lutando contra o Elemental do Fogo
+  monsterImage = document.querySelector(".monster5");
+  monsterImage.style.display = "inline";
+  playMusic('fireCreatureSound');
+}
+
+function fightNecromancer() {
+  fighting = 5; // Índice do Necromante Sombrio no array de monstros
+  goFight();
+  background.style.background = "#0A0A23";
+  background.style.marginTop = "0px";
+  verificacao = "necromancer"; // Atualiza a verificação para indicar que o jogador está lutando contra o Necromante Sombrio
+  monsterImage = document.querySelector(".monster6");
+  monsterImage.style.display = "inline";
+  playMusic('necromancerMusic');
+}
+
+function fightHydra() {
+  fighting = 6; // Índice da Hidra no array de monstros
+  goFight();
+  background.style.background = "#0A0A23";
+  background.style.marginTop = "0px";
+  verificacao = "hydra"; // Atualiza a verificação para indicar que o jogador está lutando contra a Hidra
+  monsterImage = document.querySelector(".monster7");
+  monsterImage.style.display = "inline";
+  playMusic('hydraMusic');
+  showWaterCave();
+}
+
+function fightDarkWitches() {
+  fighting = 7; // Índice das Bruxas Sombrias no array de monstros
+  goFight();
+  background.style.background = "#0A0A23";
+  background.style.marginTop = "0px";
+  verificacao = "darkWitches"; // Atualiza a verificação para indicar que o jogador está lutando contra as Bruxas Sombrias
+  monsterImage = document.querySelector(".monster8");
+  monsterImage.style.display = "inline";
+  playMusic('witchMusic');
+}
+
+function fightWerewolf() {
+  fighting = 8; // Índice do Lobisomem no array de monstros
+  goFight();
+  background.style.background = "#0A0A23";
+  background.style.marginTop = "0px";
+  verificacao = "werewolf"; // Atualiza a verificação para indicar que o jogador está lutando contra o Lobisomem
+  monsterImage = document.querySelector(".monster9");
+  monsterImage.style.display = "inline";
+  playMusic('werewolfMusic');
+}
+
+function fightGorgon() {
+  fighting = 9; // Índice da Górgon no array de monstros
+  goFight();
+  background.style.background = "#0A0A23";
+  background.style.marginTop = "0px";
+  verificacao = "gorgon"; // Atualiza a verificação para indicar que o jogador está lutando contra a Górgon
+  monsterImage = document.querySelector(".monster10");
+  monsterImage.style.display = "inline";
+  playMusic('gorgonMusic');
+}
+
+function fightAzazel() {
+  // Configurações para lutar contra Azazel
+  fighting = 10; // Índice de Azazel no array de monstros
+  goFight(); // Função para iniciar a luta
+  background.style.background = "#0A0A23";
+  background.style.marginTop = "0px";
+  monsterImage = document.querySelector(".azazel"); // Seletor da imagem de Azazel
+  monsterImage.style.display = "inline";
+  playMusic('azazelMusic');
+  verificacao = "azazel"; // Atualiza a verificação para indicar que o jogador está lutando contra Azazel
+  showFinalMap();
+  };
+
 function fightDragon() {
   fighting = 2;
   goFight();
   background.style.background = "#0A0A23";
   background.style.marginTop = "0px";
-  verificacao = 2;
+  verificacao = "dragao";
   monsterImage = document.querySelector(".monster3");
   monsterImage.style.display = "inline";
-  playMusic('dragonSound');
   playMusic('dragonMusic');
   monsterImage.style.zIndex = 1;
+}
+
+function hideAzazel() {
+  // Oculta a imagem e a música de Azazel
+  azazel = document.querySelector(".azazel");
+  azazel.style.display = "none";
+  const azazelMusic = document.getElementById('azazelMusic');
+  if (azazelMusic) {
+    azazelMusic.pause();
+  }
+  // Atualiza a verificação para indicar que o jogador não está mais lutando com Azazel
+  verificacao = 0;
+  azazel.style.zIndex = 0;
 }
 
 function goFight() {
@@ -356,6 +679,7 @@ function attack() {
   monsterHealthText.innerText = monsterHealth;
   if (health <= 0) {
     lose();
+    hideAzazel();
   } else if (monsterHealth <= 0) {
     fighting === 2 ? winGame() : defeatMonster();
   }
@@ -387,45 +711,21 @@ function defeatMonster() {
   goldText.innerText = gold;
   xpText.innerText = xp;
   update(locations[4]);
-
-  if(verificacao == 0 ) {
-    monsterImage = document.querySelector(".monster1");
-    monsterImage.style.display = "none";
-    statsText.style.color = "#0A0A23";
-    playMusic('vitorySound');  
-  }
-  if(verificacao == 1 ) {
-    monsterImage = document.querySelector(".monster2");
-    monsterImage.style.display = "none";
-    statsText.style.color = "#0A0A23";
-    playMusic('vitorySound');  
-  }
-  if(verificacao == 2 ) {
-    monsterImage = document.querySelector(".monster3");
-    monsterImage.style.display = "none";
-    statsText.style.color = "#0A0A23";
-    playMusic('vitorySound');  
-  }
+  const monsterImage = document.querySelectorAll('[class^="monster"]');
+  const azazel = document.getElementsByClass(".azazel");
+  azazel.style.display = "none";
+  statsText.style.color = "#0A0A23";
+  playMusic('vitorySound');
+  hideMonsters();
+  hideAzazel();
 }
 
 function lose() {
   update(locations[5]);
   playMusic('loseSound');
-  if(verificacao == 0 ) {
-    monsterImage = document.querySelector(".monster1");
-    monsterImage.style.display = "none";
-    statsText.style.color = "#0A0A23";
-  }
-  if(verificacao == 1 ) {
-    monsterImage = document.querySelector(".monster2");
-    monsterImage.style.display = "none";
-    statsText.style.color = "#0A0A23";
-  }
-  if(verificacao == 2 ) {
-    monsterImage = document.querySelector(".monster3");
-    monsterImage.style.display = "none";
-    statsText.style.color = "#0A0A23";
-  }
+  hideMonsters(); // Oculta apenas a imagem do monstro
+  statsText.style.color = "#0A0A23";
+  hideAzazel();
 }
 
 function winGame() {
